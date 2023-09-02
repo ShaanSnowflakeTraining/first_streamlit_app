@@ -47,7 +47,7 @@ streamlit.stop()
 
 
 
-my_cur = my_cnx.cursor()
+#my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The Fruit Load List Contains:")
@@ -55,7 +55,7 @@ streamlit.dataframe(my_data_rows)
 
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
-    my_cur.execute("Insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
+    my_cur.execute("Insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values (new_fruit)")
     return "Thanks for adding "+ new_fruit
     
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
